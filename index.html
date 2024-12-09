@@ -1,0 +1,313 @@
+Código Final
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KidsPlay</title>
+    <link href="https://fonts.google.com/noto/specimen/Noto+Sans" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Noto Sans Thin', sans-serif;
+            background-image: url('Fundo.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-position: center;
+            margin: 0;
+            padding: 0;
+            color: #000000;
+        }
+        .container {
+            max-width: 900px;
+            margin: 20px auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: rgb(125, 164, 169);
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        fieldset {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+        legend {
+            font-weight: bold;
+            color: rgb(125, 164, 169);
+            font-size: 1.2em;
+        }
+        label {
+            display: block;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+        input[type="text"],
+        input[type="number"],
+        textarea {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        textarea {
+            resize: vertical;
+            height: 50px;
+        }
+        .checkbox-group,
+        .radio-group {
+            margin-top: 10px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .checkbox-group label,
+        .radio-group label {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        button {
+            background-color: rgb(125, 164, 169);
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1em;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: rgb(125, 164, 169);
+        }
+        #resultados {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #eaf4ff;
+            border: 1px solid rgb(125, 164, 169);
+            border-radius: 8px;
+        }
+        #resultados h2 {
+            color: rgb(125, 164, 169);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>KidsPlay</h1>
+        <form id="formulario">
+            <!-- Seção 1 -->
+            <fieldset>
+                <legend>Informações Gerais da Criança</legend>
+                <label>Nome da criança:</label>
+                <input type="text" name="nomeCrianca" required>
+                <label>Sexo:</label>
+                <input type="text" name="sexo" required>
+                <label>Idade (anos):</label>
+                <input type="number" name="idade" required>
+                <label>Peso (kg):</label>
+                <input type="number" name="peso" required>
+                <label>Altura (cm):</label>
+                <input type="number" name="altura" required>
+                <label>A criança tem alguma condição de saúde ou restrição médica que condicione o exercício?</label>
+                <div class="radio-group">
+                    <label><input type="radio" name="condicaoSaude" value="Não" required> Não</label>
+                    <label><input type="radio" name="condicaoSaude" value="Sim"> Sim</label>
+                </div>
+                <textarea name="detalhesCondicaoSaude" placeholder="Se sim, especifique..."></textarea>
+                <label>A criança está envolvida em alguma atividade física regular?</label>
+                <div class="radio-group">
+                    <label><input type="radio" name="atividadeRegular" value="Não" required> Não</label>
+                    <label><input type="radio" name="atividadeRegular" value="Sim"> Sim (Qual?)</label>
+                </div>
+                <textarea name="detalhesAtividadeRegular" placeholder="Se sim, descreva..."></textarea>
+            </fieldset>
+
+            <!-- Seção 2 -->
+            <fieldset>
+                <legend>Nível de Desenvolvimento e Preferências</legend>
+                <label>Como é o nível de energia da criança?</label>
+                <div class="radio-group">
+                    <label><input type="radio" name="nivelEnergia" value="Elevado" required> Elevado</label>
+                    <label><input type="radio" name="nivelEnergia" value="Moderado"> Moderado</label>
+                    <label><input type="radio" name="nivelEnergia" value="Baixo"> Baixo</label>
+                </div>
+                <label>A criança gosta mais de atividades físicas que envolvem:</label>
+                <div class="checkbox-group">
+                    <label><input type="checkbox" name="preferenciasAtividades" value="Jogos em grupo"> Jogos em grupo</label>
+                    <label><input type="checkbox" name="preferenciasAtividades" value="Atividades individuais"> Atividades individuais</label>
+                    <label><input type="checkbox" name="preferenciasAtividades" value="Desafios criativos"> Desafios criativos</label>
+                </div>
+                <textarea name="preferenciasOutras" placeholder="Outras, especifique..."></textarea>
+                <label>Quais os tipos de atividades que a criança prefere?</label>
+                <div class="checkbox-group">
+                    <label><input type="checkbox" name="tiposAtividades" value="Atividades ao ar livre"> Atividades ao ar livre</label>
+                    <label><input type="checkbox" name="tiposAtividades" value="Desportos com bola"> Desportos com bolas</label>
+                    <label><input type="checkbox" name="tiposAtividades" value="Atividades aquáticas"> Atividades aquáticas</label>
+                    <label><input type="checkbox" name="tiposAtividades" value="Atividades rítmicas"> Atividades rítmicas</label>
+                </div>
+                <textarea name="tiposOutras" placeholder="Outras, especifique..."></textarea>
+            </fieldset>
+
+            <!-- Seção 3 -->
+            <fieldset>
+                <legend>Rotina e Disponibilidade</legend>
+                <label>Quais são os dias disponíveis para a atividade física:</label>
+                <div class="checkbox-group">
+                    <label><input type="checkbox" name="diasDisponiveis" value="Segunda-feira"> Segunda-feira</label>
+                    <label><input type="checkbox" name="diasDisponiveis" value="Terça-feira"> Terça-feira</label>
+                    <label><input type="checkbox" name="diasDisponiveis" value="Quarta-feira"> Quarta-feira</label>
+                    <label><input type="checkbox" name="diasDisponiveis" value="Quinta-feira"> Quinta-feira</label>
+                    <label><input type="checkbox" name="diasDisponiveis" value="Sexta-feira"> Sexta-feira</label>
+                    <label><input type="checkbox" name="diasDisponiveis" value="Sábado"> Sábado</label>
+                    <label><input type="checkbox" name="diasDisponiveis" value="Domingo"> Domingo</label>
+                </div>
+                <label>Quantas horas por dia é que a criança pode dedicar à atividade física?</label>
+                <div class="radio-group">
+                    <label><input type="radio" name="tempoDisponivel" value="Menos de 30 minutos" required> Menos de 30 minutos</label>
+                    <label><input type="radio" name="tempoDisponivel" value="30-60 minutos"> 30-60 minutos</label>
+                    <label><input type="radio" name="tempoDisponivel" value="Mais de 60 minutos"> Mais de 60 minutos</label>
+                </div>
+            </fieldset>
+
+            <!-- Seção 4 -->
+            <fieldset>
+                <legend>Condições de Ambiente e Segurança</legend>
+                <label>Quais são os espaços disponíveis para a prática de atividade física?</label>
+                <div class="checkbox-group">
+                    <label><input type="checkbox" name="espacosDisponiveis" value="Área interna"> Áreas interiores</label>
+                    <label><input type="checkbox" name="espacosDisponiveis" value="Área externa"> Áreas exteriores</label>
+                    <label><input type="checkbox" name="espacosDisponiveis" value="Campos desportivos"> Campos desportivos</label>
+                    <label><input type="checkbox" name="espacosDisponiveis" value="Piscina"> Piscina</label>
+                </div>
+                <label>Quais são os equipamentos disponíveis para uso?</label>
+                <div class="checkbox-group">
+                    <label><input type="checkbox" name="equipamentosDisponiveis" value="Bola"> Bola(s)</label>
+                    <label><input type="checkbox" name="equipamentosDisponiveis" value="Bicicleta"> Bicicleta/Trotinete</label>
+                    <label><input type="checkbox" name="equipamentosDisponiveis" value="Corda de saltar"> Corda de saltar</label>
+                    <label><input type="checkbox" name="equipamentosDisponiveis" value="Equipamentos de ginástica"> Equipamentos de ginástica</label>
+                </div>
+            </fieldset>
+
+            <!-- Seção 5 -->
+            <fieldset>
+                <legend>Objetivos e Expectativas</legend>
+                <label>Qual é o principal objetivo com o plano?</label>
+                <div class="checkbox-group">
+                    <label><input type="checkbox" name="objetivoPlano" value="Bem estar geral"> Bem estar geral</label>
+                    <label><input type="checkbox" name="objetivoPlano" value="Desenvolver habilidades motoras"> Desenvolver habilidades motoras</label>
+                    <label><input type="checkbox" name="objetivoPlano" value="Socializar com outras crianças"> Socializar com outras crianças</label>
+                    <label><input type="checkbox" name="objetivoPlano" value="Aumentar a confiança e autoestima"> Aumentar a confiança e autoestima</label>
+                </div>
+            </fieldset>
+
+            <button type="button" onclick="gerarPlanoTreino()">Gerar Plano de Treino</button>
+        </form>
+
+        <div id="resultados"></div>
+    </div>
+
+    <script>
+        function gerarPlanoTreino() {
+            const form = document.getElementById("formulario");
+            const dados = new FormData(form);
+            
+            // Criação de um objeto com as respostas
+            const respostas = {};
+            dados.forEach((value, key) => {
+                if (!respostas[key]) {
+                    respostas[key] = [];
+                }
+                respostas[key].push(value);
+            });
+
+            // Definição do plano de treino baseado nas respostas
+            let planoTreino = "Plano de Treino Gerado:\n\n";
+            
+            // Criar um array com os dias disponíveis
+            const diasDisponiveis = respostas["diasDisponiveis"] || [];
+
+            // Criar o plano de treino, dividindo pelos dias
+            const exerciciosPorDia = {
+                "Segunda-feira": [],
+                "Terça-feira": [],
+                "Quarta-feira": [],
+                "Quinta-feira": [],
+                "Sexta-feira": [],
+                "Sábado": [],
+                "Domingo": []
+            };
+
+            // Adicionar atividades com base nas preferências e saúde
+            if (respostas["nivelEnergia"]?.includes("Elevado")) {
+                if (diasDisponiveis.includes("Segunda-feira")) {
+                    exerciciosPorDia["Segunda-feira"].push("- Corrida ou caminhada rápida ao ar livre (20-30 minutos)");
+                }
+                if (diasDisponiveis.includes("Quarta-feira")) {
+                    exerciciosPorDia["Quarta-feira"].push("- Jogo de bola (futebol, basquete) (30 minutos)");
+                }
+            } else if (respostas["nivelEnergia"]?.includes("Baixo")) {
+                if (diasDisponiveis.includes("Terça-feira")) {
+                    exerciciosPorDia["Terça-feira"].push("- Caminhada leve no parque (20 minutos)");
+                }
+                if (diasDisponiveis.includes("Quinta-feira")) {
+                    exerciciosPorDia["Quinta-feira"].push("- Exercícios de alongamento e yoga (15 minutos)");
+                }
+            }
+
+            // Incluir atividades com base na condição de saúde
+            if (respostas["condicaoSaude"]?.includes("Sim")) {
+                if (diasDisponiveis.includes("Sábado")) {
+                    exerciciosPorDia["Sábado"].push("- Exercícios de baixo impacto (exercícios de baixo impacto, alongamento leve)");
+                }
+            }
+
+            // Incluir atividades com base na atividade regular (exemplo: ballet)
+            if (respostas["atividadeRegular"]?.includes("Sim")) {
+                const atividadeRegular = respostas["detalhesAtividadeRegular"][0].toLowerCase();
+                if (atividadeRegular.includes("ballet")) {
+                    exerciciosPorDia["Terça-feira"].push("- Exercícios de dança (alongamento e movimentos de ballet)");
+                } else if (atividadeRegular.includes("futebol")) {
+                    exerciciosPorDia["Quinta-feira"].push("- Exercícios de controle de bola (dribles, passes)");
+                }
+            }
+
+            // Adicionar os exercícios com base nos equipamentos disponíveis
+            if (respostas["equipamentosDisponiveis"]?.includes("Bola")) {
+                exerciciosPorDia["Sábado"].push("- Passe de bola (3 séries de 10 passes)");
+            }
+            if (respostas["equipamentosDisponiveis"]?.includes("Corda de saltar")) {
+                exerciciosPorDia["Domingo"].push("- Saltos com a corda (5 minutos)");
+            }
+            if (respostas["equipamentosDisponiveis"]?.includes("Bicicleta")) {
+                exerciciosPorDia["Sexta-feira"].push("- Passeio de bicicleta (30 minutos)");
+            }
+            if (respostas["equipamentosDisponiveis"]?.includes("Piscina")) {
+                exerciciosPorDia["Quarta-feira"].push("- Natação ou atividades aquáticas (20-30 minutos)");
+            }
+
+            // Exibir o plano de treino na página
+            let treinoFormatado = "";
+            for (const dia in exerciciosPorDia) {
+                if (exerciciosPorDia[dia].length > 0) {
+                    treinoFormatado += `<strong>${dia}:</strong>\n`;
+                    exerciciosPorDia[dia].forEach(exercicio => {
+                        treinoFormatado += `${exercicio}\n`;
+                    });
+                    treinoFormatado += "\n";
+                }
+            }
+
+            // Exibindo os resultados na página
+            const resultadosDiv = document.getElementById("resultados");
+            resultadosDiv.innerHTML = `<h2>Seu Plano de Treino:</h2><pre>${treinoFormatado}</pre>`;
+        }
+    </script>
+</body>
+</html>
+
